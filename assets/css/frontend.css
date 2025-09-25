@@ -1,0 +1,175 @@
+/*
+dev_modules
+Diese CSS-Datei wird in der `boot.php` des AddOns `DBAC` im Backend eingebunden (rex_view::addCssFile)
+https://redaxo.org/doku/master/addon-assets
+*/
+
+.rex-page-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999999;
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+}
+
+.rex-page-actions:has(.devMode) a.devMode {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.rex-page-actions:has(.devMode) a.optionsMode {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.rex-page-actions a {
+  display: inline-flex;
+  width: 3rem;
+  background-color: #324050;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.15s all ease-in-out;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #293440;
+}
+
+.rex-page-actions a:hover,
+.rex-page-actions a.active {
+  background-color: #4b9ad9;
+}
+
+[popover] {
+  inset: 0;
+  border: none;
+  /* top:0 right:0 bottom:0 left:0 – relative to viewport */
+  margin: auto;
+  /* auto margins + inset:0 => centered both axes */
+  max-width: 90vw;
+  /* optional */
+  max-height: 90vh;
+}
+
+#rex-add-module-popup:popover-open {
+  z-index: 999999;
+}
+
+#rex-add-module-popup::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#rex-add-module-popup select {
+  padding: 10px;
+  font-size: 1.2rem;
+  border: none;
+}
+
+.rex-add-module {
+  display: flex;
+  width: 100%;
+  height: 2px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #324050;
+  color: #fff;
+  z-index: 2;
+  opacity: 1;
+  transition: 0.15s all ease-in-out;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  padding: 8px 3px;
+  line-height: 1;
+  border: 0;
+}
+
+.rex-add-module:hover {
+  background-color: #4b9ad9;
+}
+
+.rex-add-module:before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  position: absolute;
+}
+
+.rex-slice-wrapper.rex-offline {
+  opacity: 0.5;
+}
+
+.rex-slice-wrapper {
+  position: relative;
+  border: 2px solid;
+  border-color: transparent;
+  transition: 0.15s all ease-in-out;
+}
+
+.rex-slice-wrapper:hover {
+  opacity: 1;
+  border-color: #324050;
+  opacity: 1;
+}
+
+.rex-slice-wrapper:hover .rex-slice-actions {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.rex-slice-wrapper .rex-slice-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 2;
+  background-color: #324050;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0;
+  transition: 0.15s all ease-in-out;
+  padding: 10px 15px;
+  pointer-events: none;
+}
+
+.rex-slice-wrapper .rex-slice-actions .status,
+.rex-slice-wrapper .rex-slice-actions .btn-delete,
+.rex-slice-wrapper .rex-slice-actions .btn-cut,
+.rex-slice-wrapper .rex-slice-actions .btn-copy,
+.rex-slice-wrapper .rex-slice-actions .btn-move {
+  /* display: none; */
+}
+
+.rex-slice-wrapper .rex-slice-actions .status {
+  height: 20px;
+  width: 20px;
+  border-radius: 60%;
+}
+
+.rex-slice-wrapper .rex-slice-actions .status.online {
+  background-color: #0d6a38;
+}
+
+.rex-slice-wrapper .rex-slice-actions .status.online:hover {
+  background-color: #801919;
+}
+
+.rex-slice-wrapper .rex-slice-actions .status.offline {
+  background-color: #801919;
+}
+
+.rex-slice-wrapper .rex-slice-actions .status.offline:hover {
+  background-color: #0d6a38;
+}

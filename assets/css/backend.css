@@ -1,0 +1,22 @@
+/*
+dev_modules
+Diese CSS-Datei wird in der `boot.php` des AddOns `DBAC` im Backend eingebunden (rex_view::addCssFile)
+https://redaxo.org/doku/master/addon-assets
+*/
+
+#DevModulesTable {
+    width: auto;
+}
+#DevModulesTable td {
+    padding: 10px;
+    vertical-align: middle;
+}
+#DevModulesTable th {
+    padding: 10px;
+    vertical-align: middle;
+    font-size: 1.2em;
+}
+
+#DevModulesTable .btn {
+    width: 100%;
+}

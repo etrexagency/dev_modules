@@ -1,0 +1,45 @@
+# Da R5 nur noch mit UTF8 arbeitet, entfällt der "utf8"-Suffix
+
+# Die Keys sollten mit dem Addonnamen (AddOn-Präfix) beginnen, da sie so innerhalb des AddOns vereinfacht abgefragt werden können
+# also hier AddOn-Präfix `dev_modules_`
+
+# Bezeichnung in der REDAXO-Navigation -> translate:navititle in der package.yml
+
+# AddOn-Titel für alle AddOn-Seiten, AddOn-Präfix (hier `dev_modules_`) + `title` -> `dev_modules_title`
+title = Date-based Access Controller
+dev_modules_title = DEV Modules
+
+# Hauptnavi-Punkte des AddOns
+dev_modules_backend_options = LIVE / DEV Module
+dev_modules_frontend_options = Frontend Optionen
+dev_modules_info = Info
+dev_modules_description= Beschreibung
+dev_modules_changelog = Changelog
+
+# Einstellungen
+dev_modules_config_create_dev = DEV Kopie erstellen
+dev_modules_config_delete_dev = DEV Kopie löschen
+dev_modules_config_overwrite_with_dev = LIVE Modul überschreiben
+
+# WYSIWYG
+dev_modules_config_activate = Frontend Optionen aktivieren
+dev_modules_config_edit_page = Seite Bearbeiten Button
+dev_modules_config_adding_modules = Block hinzufügen
+dev_modules_config_edit = Bearbeiten
+dev_modules_config_move_up = Nach oben verschieben
+dev_modules_config_move_down = Nach unten verschieben
+dev_modules_config_cut = Ausschneiden
+dev_modules_config_copy = Kopieren
+dev_modules_config_delete = Löschen
+dev_modules_config_status = Status
+
+# Allgemein
+dev_modules_general = Allgemein
+dev_modules_general_show = anzeigen
+dev_modules_general_module = Modul
+dev_modules_general_site = Seite
+dev_modules_general_buttons = Buttons
+
+# Benennung für die Addonrechte
+# sichtbar innerhalb der REDAXO-Administration unter `Benutzer > Rollen > Allgemein`
+perm_general_dev_modules[] = Rechte für DEV Modules

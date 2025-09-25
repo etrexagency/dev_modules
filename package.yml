@@ -1,0 +1,67 @@
+# Definiert das AddOn, grundlegende Einstellungen - Diese Detei ist unbedingt erforderlich
+# Dokumentation der `package.yml` https://redaxo.org/doku/master/addon-package
+# Alle hier gesetzten Werte können über `$addon->getProperty($key)` abgefragt werden
+
+package: dev_modules # Pflichtfeld
+version: "1.0.0" # Pflichtfeld
+author: Loris Vonlanthen # Pflichtfeld für FOR-AddOns
+supportpage: https://etrex.ch # Github-Adresse des AddOns
+
+requires:
+  redaxo: "^5.15.0"
+  php:
+    version: ">7"
+  packages:
+    developer: "^3.6.0"
+    bloecks: "^4.0.0"
+
+# Werte die mit `translate:` beginnen, werden anhand der Sprachdatei (lang/sprache.lang) übersetzt.
+# Der AddOn-Präfix (hier `dev_modules_`) kann weggelassen werden.
+
+# Seiten des AddOns
+page:
+  title: "translate:dev_modules_title" # Bezeichnung in der REDAXO Navigation
+  icon: rex-icon fa-clone # Icon von Font Awesome
+  perm: admin # Seite ist nur für Admins erreichbar
+  pjax: true # Hier kann die Verwendung von PJAX für das eigene AddOn gesteuert werden
+  # mit der Einstellung `prio` kann die Position im Hauptmenü beeinflusst werdens
+  #prio: 10
+
+  # Unterseiten
+  subpages:
+    backend_options:
+      title: "translate:dev_modules_backend_options"
+      icon: rex-icon fa-wrench # Icon von Font Awesome
+      perm: dev_modules[] # Das AddOn stellt ein Benutzerrecht bereit, das aktiviert sein muss, um diese Unterseite zu erreichen. Admins haben alle Rechte.
+      subPath: "pages/config.backend_options.php"
+    frontend_options:
+      title: "translate:dev_modules_frontend_options"
+      icon: rex-icon fa-brush # Icon von Font Awesome
+      perm: dev_modules[] # Das AddOn stellt ein Benutzerrecht bereit, das aktiviert sein muss, um diese Unterseite zu erreichen. Admins haben alle Rechte.
+      subPath: "pages/config.frontend_options.php"
+    info:
+      title: "translate:dev_modules_info"
+      perm: dev_modules[] # Das AddOn stellt ein Benutzerrecht bereit, das aktiviert sein muss, um diese Unterseite zu erreichen. Admins haben alle Rechte.
+      subpages: # Weitere Subpages der Hauptseite
+        description:
+          {
+            title: "translate:dev_modules_description",
+            subPath: "pages/DESCRIPTION.md",
+          }
+        changelog:
+          {
+            title: "translate:dev_modules_changelog",
+            subPath: "pages/CHANGELOG.md",
+          }
+    controller:
+      title: "Controller"
+      perm: dev_modules[] # Das AddOn stellt ein Benutzerrecht bereit, das aktiviert sein muss, um diese Unterseite zu erreichen. Admins haben alle Rechte.
+      subPath: "pages/dev_modules_controller.php"
+      hidden: true,
+
+# Installer (ab REX 5.7)
+# Angabe von Ordnern und Dateien, die vom Installer ausgelassen werden sollen, wenn ein Release veröffentlicht wird
+# Siehe auch https://github.com/redaxo/redaxo/pull/2352
+installer_ignore:
+  - node_modules
+  - .env
