@@ -1,30 +1,31 @@
-# Da R5 nur noch mit UTF8 arbeitet, entfällt der "utf8"-Suffix
-
-# Die Keys sollten mit dem Addonnamen (AddOn-Präfix) beginnen, da sie so innerhalb des AddOns vereinfacht abgefragt werden können
-# also hier AddOn-Präfix `dev_modules_`
-
-# Bezeichnung in der REDAXO-Navigation -> translate:navititle in der package.yml
-
-# AddOn-Titel für alle AddOn-Seiten, AddOn-Präfix (hier `dev_modules_`) + `title` -> `dev_modules_title`
 title = Date-based Access Controller
 dev_modules_title = DEV Modules
 
-# Hauptnavi-Punkte des AddOns
-dev_modules_config = Settings
+dev_modules_backend_options = LIVE / DEV Modules
+dev_modules_frontend_options = Frontend options
 dev_modules_info = Info
-dev_modules_description= Description
+dev_modules_description = Description
 dev_modules_changelog = Changelog
 
-# Einstellungen
-dev_modules_config_create_dev = Create DEV Copy
-dev_modules_config_delete_dev = Delete DEV Copy
-dev_modules_config_overwrite_with_dev = Overwrite LIVE Module
+dev_modules_config_create_dev = Create DEV copy
+dev_modules_config_delete_dev = Delete DEV copy
+dev_modules_config_overwrite_with_dev = Overwrite LIVE module
 
-dev_modules_config_id = ID
-dev_modules_config_live_module = LIVE Module
-dev_modules_config_dev_module = DEV Module
+dev_modules_config_activate = Enable frontend options
+dev_modules_config_edit_page = Edit page button
+dev_modules_config_adding_modules = Add block
+dev_modules_config_edit = Edit
+dev_modules_config_move_up = Move up
+dev_modules_config_move_down = Move down
+dev_modules_config_cut = Cut
+dev_modules_config_copy = Copy
+dev_modules_config_delete = Delete
+dev_modules_config_status = Status
 
+dev_modules_general = General
+dev_modules_general_show = show
+dev_modules_general_module = Module
+dev_modules_general_site = Page
+dev_modules_general_buttons = Buttons
 
-# Benennung für die Addonrechte
-# sichtbar innerhalb der REDAXO-Administration unter `Benutzer > Rollen > Allgemein`
-perm_general_dev_modules[] = Right for DEV Modules
+perm_general_dev_modules[] = Permissions for DEV Modules
