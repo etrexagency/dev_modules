@@ -4,8 +4,8 @@
 
 package: dev_modules # Pflichtfeld
 version: "1.0.1" # Pflichtfeld
-author: Loris Vonlanthen # Pflichtfeld für FOR-AddOns
-supportpage: https://etrex.ch # Github-Adresse des AddOns
+author: etrex GmbH # Pflichtfeld für FOR-AddOns
+supportpage: https://github.com/etrexagency/dev_modules # Github-Adresse des AddOns
 
 requires:
   redaxo: "^5.15.0"
