@@ -48,5 +48,4 @@ Helpful controls can be displayed in the frontend—only for logged-in REDAXO us
 ## Requirements
 
 - Redaxo version: 5.15.0
-- [developer](https://github.com/FriendsOfREDAXO/developer) >= 3.6.0 for module input and output
 - [blOecks](https://github.com/FriendsOfREDAXO/bloecks) >= 4.0.0 for module code-injection in editor mode
