@@ -52,5 +52,4 @@ To use the add-on, it must be installed and stored in the template `<?php echo g
 ## Requirements
 
 - Redaxo version: 5.15.0
-- [developer](https://github.com/FriendsOfREDAXO/developer) >= 3.6.0 for module input and output
 - [blOecks](https://github.com/FriendsOfREDAXO/bloecks) >= 4.0.0 for module code-injection in editor mode
