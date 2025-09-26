@@ -12,7 +12,6 @@ requires:
   php:
     version: ">7"
   packages:
-    developer: "^3.6.0"
     bloecks: "^4.0.0"
 
 # Werte die mit `translate:` beginnen, werden anhand der Sprachdatei (lang/sprache.lang) übersetzt.
