@@ -4,7 +4,9 @@
 
 ### 1.0.2
 
-Realisiert, dass ds Developer AddOn gar nicht benötigt wird.
+-  Realisiert, dass das Developer AddOn gar nicht benötigt wird.
+-  Package.yml angepasst
+-  DESCRIPTION und README Markdown Dateien mit Bildern ergänzt.
 
 ### 1.0.1
 
