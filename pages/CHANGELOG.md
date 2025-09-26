@@ -2,6 +2,14 @@
 
 ## Versionen
 
+### 1.0.2
+
+Realisiert, dass ds Developer AddOn gar nicht benötigt wird.
+
+### 1.0.1
+
+Workflow Bugfix
+
 ### 1.0.0
 
 #### Erstveröffentlichung von ETX: DEV Modules.
