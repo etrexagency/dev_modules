@@ -3,7 +3,7 @@
 # Alle hier gesetzten Werte können über `$addon->getProperty($key)` abgefragt werden
 
 package: dev_modules # Pflichtfeld
-version: "1.0.1" # Pflichtfeld
+version: "1.0.2" # Pflichtfeld
 author: etrex GmbH # Pflichtfeld für FOR-AddOns
 supportpage: https://github.com/etrexagency/dev_modules # Github-Adresse des AddOns
 
