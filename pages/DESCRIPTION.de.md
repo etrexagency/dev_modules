@@ -12,6 +12,8 @@ DEV Modules erleichtert das sichere Entwickeln und Testen von REDAXO-Modulen im 
 - LIVE mit DEV überschreiben: übernimmt den aktuellen DEV-Stand in das LIVE-Modul.
 - DEV-Kopie löschen: entfernt die DEV-Variante samt Zuordnung.
 
+<img width="983" height="742" alt="image" src="https://github.com/user-attachments/assets/5e90afe5-9003-4164-bc88-aeebfe00d05b" />
+
 ### Frontend-Optionen (WYSIWYG-Werkzeuge)
 
 Im Frontend können – nur für eingeloggte REDAXO-Nutzer – hilfreiche Bedienelemente eingeblendet werden:
@@ -23,6 +25,25 @@ Im Frontend können – nur für eingeloggte REDAXO-Nutzer – hilfreiche Bedien
 - Nach oben / unten verschieben
 - Block hinzufügen zwischen bestehenden Modulen
 - DEV Mode: rendert im Frontend die DEV-Kopien anstelle der LIVE-Module. Ideal zum Prüfen neuer Ausgaben, ohne die Live-Besucher zu beeinflussen.
+
+<img width="975" height="879" alt="image" src="https://github.com/user-attachments/assets/561d0a5b-586d-4f79-bfad-d2dca8620a2e" />
+
+#### Frontend Optionen aktiv (zeigt im angemeldeten Modus die Buttons unten an: Editiermodus öffnen, Options Mode und DEV Mode)
+
+<img width="1260" height="1187" alt="image" src="https://github.com/user-attachments/assets/80c3e09f-268b-480a-aab6-d26e7fafdd66" />
+
+#### Frontend Optionen: Options Mode aktiv (zeigt Optionen anhand AddOn-Einstellungen an)
+
+<img width="1259" height="1198" alt="image" src="https://github.com/user-attachments/assets/91f432d6-f70a-4c66-b3b8-e519d283b1cd" />
+
+#### Frontend Optionen: Options Mode - Block hinzufügen
+
+<img width="1263" height="1198" alt="image" src="https://github.com/user-attachments/assets/b3965102-00a2-4916-8963-e2472e6353b8" />
+
+#### Frontend Optionen: DEV Mode aktiv (zeigt verknüpfte DEV anstatt LIVE Module aus den AddOn Einstellungen)
+
+<img width="1267" height="1195" alt="image" src="https://github.com/user-attachments/assets/5e47ee6c-e7e9-43c9-b765-0d159fd3420e" />
+
 
 ### Einstellungen
 
