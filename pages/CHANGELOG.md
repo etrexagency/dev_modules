@@ -2,6 +2,9 @@
 
 ## Versionen
 
+### 1.1.1
+- Beim Klick auf OPTIONS und DEV Mode aktuellen URL nehmen und nicht auf Startseite weiterleiten.
+
 ### 1.1.0
 - Proxy für CSRF Token erstellt, damit er vom Backend geholt wird und nicht im Frontend erzeugt wird.
 - Copy und Cut Funktion aufgrund der neuen bloecks Version angepasst.

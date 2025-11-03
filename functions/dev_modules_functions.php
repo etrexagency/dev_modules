@@ -407,7 +407,7 @@ function showDevModulesButtons($articleId, $html = '')
         $btn       = '<a title="Editiermodus öffnen" href="' . $editUrl . '" target="_blank"><i class="fa fa-light fa-file-pen"></i></a>';
         $html .= $btn;
     }
-    $base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https' : 'http') . '://' .  $_SERVER['HTTP_HOST'];
+    $base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https' : 'http') . '://' .  $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
     $html .= '<div>';
     $btn = '<a class="optionsMode ' . ($optionsMode ? 'active' : '') . '" title="Modul Optionen umschalten" href="' . $base_url . '?options_mode=' . ($optionsMode ? 0 : 1) . '"><i class="fa fa-light fa-brush"></i></a>';
