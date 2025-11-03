@@ -2,6 +2,14 @@
 
 ## Versionen
 
+### 1.1.0
+- Proxy für CSRF Token erstellt, damit er vom Backend geholt wird und nicht im Frontend erzeugt wird.
+- Copy und Cut Funktion aufgrund der neuen bloecks Version angepasst.
+- Package Dependency Bug beim Update behoben (@artofproduction)
+
+### 1.0.1 & 1.0.2
+Kleine Setup Anpassungen
+
 ### 1.0.0
 
 #### Erstveröffentlichung von ETX: DEV Modules.

@@ -53,4 +53,4 @@ Um das AddOn nutzen zu können, muss es installiert und im Template `<?php echo 
 
 - Redaxo version: 5.15.0
 - [developer](https://github.com/FriendsOfREDAXO/developer) >= 3.6.0 for module input and output
-- [blOecks](https://github.com/FriendsOfREDAXO/bloecks) >= 4.0.0 for module code-injection in editor mode
+- [blOecks](https://github.com/FriendsOfREDAXO/bloecks) >= 5.2.0 for module code-injection in editor mode and slice moving

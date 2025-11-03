@@ -1,6 +1,5 @@
 
 <?php
-session_start();
 
 
 // Frontend Konfiguration auslesen
@@ -245,6 +244,7 @@ if (!function_exists('getArticleContentWithFrontendOptions')) {
         // CSRF-Tokens
         $csrfMove   = rex_csrf_token::factory(rex_api_content_move_slice::class)->getValue();
         $csrfStatus = rex_csrf_token::factory(rex_api_content_slice_status::class)->getValue();
+
         // Module für "Block hinzufügen"
         $modules = [];
         if (!empty($GLOBALS["frontend_config"]['addingModules'])) {
@@ -301,35 +301,72 @@ if (!function_exists('getArticleContentWithFrontendOptions')) {
             }
 
             // status
-            if (!empty($GLOBALS["frontend_config"]['delete'])) {
-                $html .= "<a target='_blank' title='Status'
-                    href='" . rex_escape('/redaxo/index.php?page=content/edit&article_id=' . $articleId . '&slice_id=' . $sliceId . '&clang=' . $clang . '&ctype=' . $ctype . '&status=0&rex-api-call=content_slice_status&_csrf_token=' . $csrfStatus) . "'
-                    class='btn btn-default $statusCl'>";
+            if (!empty($GLOBALS["frontend_config"]['status'])) {
 
-                if ($status === 1) {
-                    $html .= "<div class='status online'></div>";
-                } else {
-                    $html .= "<div class='status offline'></div>";
-                }
-                $html .= "</a>";
+                $href = rex_url::backendController([
+                    'rex-api-call' => 'dev_modules_go',
+                    'do'           => 'status',
+                    'article_id'   => $articleId,
+                    'slice_id'     => $sliceId,
+                    'clang'        => $clang,
+                    'ctype'        => $ctype,
+                ]);
+
+                // STATUS TOGGLE (Beispiel: offline setzen = 0)
+                $html .= "<a target='_blank' title='Status' data-token='" . $csrfStatus . "'
+  href='" . rex_escape("/redaxo/index.php?rex-api-call=dev_modules_go&do=status&status=0&article_id={$articleId}&slice_id={$sliceId}&clang={$clang}&ctype={$ctype}") . "'
+  class='btn btn-default {$statusCl}'><div class='status " . ($status ? "online" : "offline") . "'></div></a>";
             }
             if (!empty($GLOBALS["frontend_config"]['copy'])) {
-                $html .= "<a target='_blank' title='Kopieren' href='" . rex_escape('/redaxo/index.php?page=content/edit&article_id=' . $articleId . '&bloecks=cutncopy&module_id=' . $moduleId . '&slice_id=' . $sliceId . '&clang=' . $clang . '&ctype=' . $ctype . '&revision=0&cuc_action=copy') . "'
-                        class='btn btn-copy'><i class='fa fa-light fa-copy'></i></a>";
+                $html .= "<a title='Kopieren' href='#'
+                    class='btn btn-copy btn-bloecks-copy' 
+                    data-link='" . rex_escape('/redaxo/index.php?page=content/edit&article_id=' . $articleId  . '&clang=' . $clang . '&ctype=' . $ctype . '&mode=edit#slice' . $sliceId) . "'
+                    data-slice-id='" . $sliceId . "'
+                    data-article-id='" . $articleId . "'
+                    data-clang-id='" . $clang . "'
+                    data-ctype-id='" . $ctype . "'><i class='fa fa-light fa-copy'></i></a>";
             }
 
             if (!empty($GLOBALS["frontend_config"]['cut'])) {
-                $html .= "<a target='_blank' title='Ausschneiden' href='" . rex_escape('/redaxo/index.php?page=content/edit&article_id=' . $articleId . '&bloecks=cutncopy&module_id=' . $moduleId . '&slice_id=' . $sliceId . '&clang=' . $clang . '&ctype=' . $ctype . '&revision=0&cuc_action=cut') . "'
-                        class='btn btn-cut'><i class='fa fa-light fa-cut'></i></a>";
+                $html .= "<a title='Ausschneiden' href='#'
+                        class='btn btn-cut btn-bloecks-cut' 
+                        data-link='" . rex_escape('/redaxo/index.php?page=content/edit&article_id=' . $articleId . '&clang=' . $clang . '&ctype=' . $ctype . '&mode=edit#slice' . $sliceId) . "'
+                        data-slice-id='" . $sliceId . "'
+                        data-article-id='" . $articleId . "'
+                        data-clang-id='" . $clang . "'
+                        data-ctype-id='" . $ctype . "'><i class='fa fa-light fa-cut'></i></a>";
             }
 
+            // move up
             if (!empty($GLOBALS["frontend_config"]['moveUp'])) {
-                $html .= "<a target='_blank' title='Nach oben schieben' href='" . rex_escape('/redaxo/index.php?page=content/edit&article_id=' . $articleId . '&slice_id=' . $sliceId . '&clang=' . $clang . '&ctype=' . $ctype . '&upd=' . time() . '&direction=moveup&rex-api-call=content_move_slice&_csrf_token=' . $csrfMove . '#slice' . $sliceId) . "'
+                $href = rex_url::backendController([
+                    'rex-api-call' => 'dev_modules_go',
+                    'do'           => 'move',
+                    'direction'    => 'moveup',
+                    'article_id'   => $articleId,
+                    'slice_id'     => $sliceId,
+                    'clang'        => $clang,
+                    'ctype'        => $ctype,
+                ]);
+
+                $html .= "<a target='_blank' title='Nach oben schieben' href='" . $href . "'
                         class='btn btn-move'><i class='fa fa-light fa-arrow-up'></i></a>";
             }
 
+            // move down
             if (!empty($GLOBALS["frontend_config"]['moveDown'])) {
-                $html .= "<a target='_blank' title='Nach unten schieben' href='" . rex_escape('/redaxo/index.php?page=content/edit&article_id=' . $articleId . '&slice_id=' . $sliceId . '&clang=' . $clang . '&ctype=' . $ctype . '&upd=' . time() . '&direction=movedown&rex-api-call=content_move_slice&_csrf_token=' . $csrfMove . '#slice' . $sliceId) . "'
+                $href = rex_url::backendController([
+                    'rex-api-call' => 'dev_modules_go',
+                    'do'           => 'move',
+                    'direction'    => 'movedown',
+                    'article_id'   => $articleId,
+                    'slice_id'     => $sliceId,
+                    'clang'        => $clang,
+                    'ctype'        => $ctype,
+                ]);
+
+
+                $html .= "<a target='_blank' title='Nach unten schieben' href='" . $href . "'
                         class='btn btn-move'><i class='fa fa-light fa-arrow-down'></i></a>";
             }
             $html .= "</div>";
@@ -358,6 +395,8 @@ if (!function_exists('getArticleContentWithFrontendOptions')) {
 }
 function showDevModulesButtons($articleId, $html = '')
 {
+    $devMode     = rex_session('dev_modules.devMode', 'bool', false);
+    $optionsMode = rex_session('dev_modules.optionsMode', 'bool', false);
     // bring global frontend config into function scope
 
     $html .= '<div class="rex-page-actions">';
@@ -371,11 +410,11 @@ function showDevModulesButtons($articleId, $html = '')
     $base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https' : 'http') . '://' .  $_SERVER['HTTP_HOST'];
 
     $html .= '<div>';
-    $btn = '<a class="optionsMode ' . ($_SESSION['optionsMode'] ? 'active' : '') . '" title="Modul Optionen umschalten" href="' . $base_url . '?options_mode=' . ($_SESSION['optionsMode'] ? 0 : 1) . '"><i class="fa fa-light fa-brush"></i></a>';
+    $btn = '<a class="optionsMode ' . ($optionsMode ? 'active' : '') . '" title="Modul Optionen umschalten" href="' . $base_url . '?options_mode=' . ($optionsMode ? 0 : 1) . '"><i class="fa fa-light fa-brush"></i></a>';
     $html .= $btn;
 
     if (rex::getUser()->isAdmin()) {
-        $btn       = '<a class="devMode ' . ($_SESSION['devMode'] ? 'active' : '') . '"  title="DEV Modus umschalten" href="' . $base_url . '?dev_mode=' . ($_SESSION['devMode'] ? 0 : 1) . '"><i class="fa fa-light fa-wrench"></i></a>';
+        $btn       = '<a class="devMode ' . ($devMode ? 'active' : '') . '"  title="DEV Modus umschalten" href="' . $base_url . '?dev_mode=' . ($devMode ? 0 : 1) . '"><i class="fa fa-light fa-wrench"></i></a>';
         $html .= $btn;
         $html .= '</div>';
     }
@@ -386,17 +425,20 @@ function showDevModulesButtons($articleId, $html = '')
 if (!function_exists('getArticleContent')) {
     function getArticleContent()
     {
+        $devMode     = rex_session('dev_modules.devMode', 'bool', false);
+        $optionsMode = rex_session('dev_modules.optionsMode', 'bool', false);
+
         $articleId    = rex_article::getCurrentId();
         $ctype = 1;
 
         // DEV-Mode aktiv -> Module mit DEV Versionen ausgeben (falls vorhanden)
-        if (rex::isFrontend() and rex_backend_login::hasSession() and $_SESSION["devMode"]) {
+        if (rex::isFrontend() and rex_backend_login::hasSession() and $devMode) {
 
             return getChangedArticleContent($articleId);
         }
 
         // Option Mode aktiv -> Module mit Optionen ausgeben
-        if ($GLOBALS["frontend_config"]['activateAddOn'] and rex::isFrontend() and rex_backend_login::hasSession() and $_SESSION["optionsMode"]) {
+        if ($GLOBALS["frontend_config"]['activateAddOn'] and rex::isFrontend() and rex_backend_login::hasSession() and $optionsMode) {
 
             return getArticleContentWithFrontendOptions($articleId);
         }

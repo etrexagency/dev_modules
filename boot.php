@@ -4,13 +4,14 @@
 // Die `boot.php` wird bei jeder Aktion in REDAXO ausgeführt (Frontend und Backend). Hier können beliebige Befehle ausgeführt werden.
 // Dokumentation AddOn Aufbau und Struktur https://redaxo.org/doku/master/addon-struktur
 
-session_start();
+rex_login::startSession();
 
 $GLOBALS["frontend_config"] = [
     'activateAddOn'  => (bool) rex_config::get('dev_modules', 'activate'),
     'editPage'       => (bool) rex_config::get('dev_modules', 'edit-page'),
     'addingModules'  => (bool) rex_config::get('dev_modules', 'adding-modules'),
     'edit'           => (bool) rex_config::get('dev_modules', 'edit'),
+    'status'         => (bool) rex_config::get('dev_modules', 'status'),
     'moveUp'         => (bool) rex_config::get('dev_modules', 'move-up'),
     'moveDown'       => (bool) rex_config::get('dev_modules', 'move-down'),
     'cut'            => (bool) rex_config::get('dev_modules', 'cut'),
@@ -18,34 +19,36 @@ $GLOBALS["frontend_config"] = [
     'delete'         => (bool) rex_config::get('dev_modules', 'delete'),
 ];
 
-// Defaults nur einmal setzen
-$_SESSION['devMode']     = $_SESSION['devMode']     ?? false;
-$_SESSION['optionsMode'] = $_SESSION['optionsMode'] ?? false;
 
-// Eingaben lesen (null = nicht gesetzt)
-$devParam  = rex_get('dev_mode', 'int', null);       // erwartet 0 oder 1
-$optParam  = rex_get('options_mode', 'int', null);   // erwartet 0 oder 1
+// Zustände lesen (Default false)
+$devKey = 'dev_modules.devMode';
+$optKey = 'dev_modules.optionsMode';
+$devMode     = rex_session($devKey, 'bool', false);
+$optionsMode = rex_session($optKey, 'bool', false);
 
-// Mutually exclusive toggles:
-// Wenn Parameter kommen, setzen wir den jeweiligen Modus
-// und schalten den anderen aus. (Reihenfolge: options > dev, bei Bedarf umdrehen)
+// GET-Parameter verarbeiten (0/1)
+$devParam = rex_request('dev_mode', 'int', null);
+$optParam = rex_request('options_mode', 'int', null);
+
+// Exclusives Umschalten
 if ($optParam !== null) {
-    $_SESSION['optionsMode'] = ($optParam === 1);
-    if ($_SESSION['optionsMode']) {
-        $_SESSION['devMode'] = false;
-    }
+    $optionsMode = (bool) $optParam;
+    if ($optionsMode) $devMode = false;
+    rex_set_session($optKey, $optionsMode);
+    rex_set_session($devKey, $devMode);
 }
 if ($devParam !== null) {
-    $_SESSION['devMode'] = ($devParam === 1);
-    if ($_SESSION['devMode']) {
-        $_SESSION['optionsMode'] = false;
-    }
+    $devMode = (bool) $devParam;
+    if ($devMode) $optionsMode = false;
+    rex_set_session($devKey, $devMode);
+    rex_set_session($optKey, $optionsMode);
 }
 
 $addon = rex_addon::get('dev_modules');
 
 // Eigene PHP-Funktionen im Backend und Frontend einbinden
 $addon->includeFile('functions/dev_modules_functions.php');
+$addon->includeFile('functions/dev_modules_csrf.php');
 
 // AddOn-Rechte (permissions) registieren
 // Hinweis: In der `de_de.lang`-Datei sind Text-Einträge für das Backend vorhanden (z.B. perm_general_dev_modules[])
