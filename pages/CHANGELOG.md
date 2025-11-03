@@ -2,7 +2,7 @@
 
 ## Versionen
 
-### 1.1.1
+### 1.1.1 - 1.1.2
 - Beim Klick auf OPTIONS und DEV Mode aktuellen URL nehmen und nicht auf Startseite weiterleiten.
 
 ### 1.1.0
