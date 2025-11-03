@@ -12,6 +12,7 @@ dev_modules_title = DEV Modules
 # Hauptnavi-Punkte des AddOns
 dev_modules_backend_options = LIVE / DEV Module
 dev_modules_frontend_options = Frontend Optionen
+dev_modules_config = Frontend Optionen: Einstellungen
 dev_modules_info = Info
 dev_modules_description= Beschreibung
 dev_modules_changelog = Changelog

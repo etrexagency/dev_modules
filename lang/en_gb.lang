@@ -3,6 +3,7 @@ dev_modules_title = DEV Modules
 
 dev_modules_backend_options = LIVE / DEV Modules
 dev_modules_frontend_options = Frontend options
+dev_modules_config = Frontend optionen: Settings
 dev_modules_info = Info
 dev_modules_description = Description
 dev_modules_changelog = Changelog
