@@ -2,7 +2,7 @@
 
 ## Versionen
 
-### 1.1.3
+### 1.1.3 - 1.1.4
 - Tab beim erneuten Öffnen nur dann neuladen, wenn Options Mode gesetzt ist
 - Schreibfehler behoben
 - Style Anpassungen
