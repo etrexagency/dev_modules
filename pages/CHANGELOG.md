@@ -2,6 +2,12 @@
 
 ## Versionen
 
+### 1.1.3
+- Tab beim erneuten Öffnen nur dann neuladen, wenn Options Mode gesetzt ist
+- Schreibfehler behoben
+- Style Anpassungen
+- Fehlende Übersetzungen ergänzt
+
 ### 1.1.1 - 1.1.2
 - Beim Klick auf OPTIONS und DEV Mode aktuellen URL nehmen und nicht auf Startseite weiterleiten.
 

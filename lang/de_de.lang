@@ -26,12 +26,15 @@ dev_modules_config_overwrite_with_dev = LIVE Modul überschreiben
 dev_modules_config_activate = Frontend Optionen aktivieren
 dev_modules_config_edit_page = Seite Bearbeiten Button
 dev_modules_config_adding_modules = Block hinzufügen
+dev_modules_config_choose_module = Modul auswählen...
 dev_modules_config_edit = Bearbeiten
 dev_modules_config_move_up = Nach oben verschieben
 dev_modules_config_move_down = Nach unten verschieben
+dev_modules_config_show = Anzeigen
 dev_modules_config_cut = Ausschneiden
 dev_modules_config_copy = Kopieren
 dev_modules_config_delete = Löschen
+dev_modules_config_confirm_delete = Block wirklich löschen?
 dev_modules_config_status = Status
 
 # Allgemein

@@ -15,12 +15,15 @@ dev_modules_config_overwrite_with_dev = Overwrite LIVE module
 dev_modules_config_activate = Enable frontend options
 dev_modules_config_edit_page = Edit page button
 dev_modules_config_adding_modules = Add block
+dev_modules_config_choose_module = Choose module...
 dev_modules_config_edit = Edit
 dev_modules_config_move_up = Move up
 dev_modules_config_move_down = Move down
+dev_modules_config_show = Show
 dev_modules_config_cut = Cut
 dev_modules_config_copy = Copy
 dev_modules_config_delete = Delete
+dev_modules_config_confirm_delete = Are you sure you want to delete the block?
 dev_modules_config_status = Status
 
 dev_modules_general = General

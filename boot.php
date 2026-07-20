@@ -65,7 +65,7 @@ if (rex::isBackend() && 'dev_modules' == rex_be_controller::getCurrentPagePart(1
 
 // Falls Frontend Options in den AddOn Einstellugnen aktiviert -> entsprechende Assets am richtigen Ort laden
 if ($GLOBALS["frontend_config"]['activateAddOn'] && rex::isFrontend() && rex_backend_login::hasSession()) {
-    rex_extension::register('OUTPUT_FILTER', function (rex_extension_point $ep) use ($addon) {
+    rex_extension::register('OUTPUT_FILTER', function (rex_extension_point $ep) use ($addon, $optionsMode) {
         $html = $ep->getSubject();
 
         // --- <head>-Assets injizieren (nur wenn <head> existiert)
@@ -87,11 +87,15 @@ if ($GLOBALS["frontend_config"]['activateAddOn'] && rex::isFrontend() && rex_bac
             $html = str_replace('</body>', $buttonContainer . '</body>', $html);
         }
 
-        // --- Buttons vor </body> einfügen (nur wenn </body> existiert)
+        // --- data-dev dem HTML hinzufügen (nur wenn <html> existiert)
         if (strpos($html, '<html') !== false) {
             $articleId       = rex_article::getCurrentId();
             $buttonContainer = showDevModulesButtons($articleId);
-            $html = str_replace('<html', '<html data-dev', $html);
+            $dataAttrs = 'data-dev';
+            if ($optionsMode) {
+                $dataAttrs .= ' data-options-mode';
+            }
+            $html = str_replace('<html', '<html ' . $dataAttrs, $html);
         }
 
         $ep->setSubject($html);

@@ -21,7 +21,7 @@ if (document.documentElement.hasAttribute('data-dev') && !window.__visReloadBoun
       leftAt = Date.now();     // Tab verlassen
     } else {
       const awaySec = (Date.now() - leftAt) / 1000;
-      if (leftAt && awaySec >= THRESHOLD) {
+      if (leftAt && awaySec >= THRESHOLD && document.documentElement.hasAttribute('data-options-mode')) {
         location.reload();
       }
       leftAt = 0;
@@ -30,7 +30,7 @@ if (document.documentElement.hasAttribute('data-dev') && !window.__visReloadBoun
 
   // Zurück aus bfcache -> reload
   window.addEventListener('pageshow', (e) => {
-    if (e.persisted) {
+    if (e.persisted && document.documentElement.hasAttribute('data-options-mode')) {
       location.reload();
     }
   });

@@ -40,7 +40,7 @@ Helpful controls can be displayed in the frontend—only for logged-in REDAXO us
 
 <img width="1263" height="1198" alt="image" src="https://github.com/user-attachments/assets/b3965102-00a2-4916-8963-e2472e6353b8" />
 
-#### Frontend Options: DEV Mode active (shows linked DEV modules instead of the LIVE ones created in the addn settings)
+#### Frontend Options: DEV Mode active (shows linked DEV modules instead of the LIVE ones created in the addon settings)
 
 <img width="1267" height="1195" alt="image" src="https://github.com/user-attachments/assets/5e47ee6c-e7e9-43c9-b765-0d159fd3420e" />
 

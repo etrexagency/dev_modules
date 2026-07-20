@@ -235,6 +235,7 @@ if (!function_exists('getChangedArticleContent')) {
 if (!function_exists('getArticleContentWithFrontendOptions')) {
     function getArticleContentWithFrontendOptions($articleId)
     {
+        $addon = rex_addon::get('dev_modules');
         // bring global frontend config into function scope
 
         $clang     = rex_clang::getCurrentId();
@@ -274,7 +275,7 @@ if (!function_exists('getArticleContentWithFrontendOptions')) {
             if (!empty($GLOBALS["frontend_config"]['addingModules'])) {
                 $html .= "<button class='rex-add-module'
                 popovertarget='rex-add-module-popup' onclick='addModuleToCurrentPosition($index, $sliceId, $clang, $articleId)'>
-                <i class='fa fa-light fa-plus'></i> Block hinzufügen
+                <i class='fa fa-light fa-plus'></i> " . $addon->i18n('dev_modules_config_adding_modules') . "
             </button>";
             }
 
@@ -283,18 +284,18 @@ if (!function_exists('getArticleContentWithFrontendOptions')) {
             $html .= "<div class='rex-slice-actions'>";
 
             // open
-            $html .= "<a target='_blank'
+            $html .= "<a target='_blank' title='" . $addon->i18n('dev_modules_config_show') . "'
                     href='" . rex_escape('/redaxo/index.php?page=content/edit&article_id=' . $articleId . '#slice' . $sliceId) . "'
                     class='btn btn-open'><i class='fa fa-light fa-arrow-up-right-from-square'></i></a>";
 
             if (!empty($GLOBALS["frontend_config"]['edit'])) {
-                $html .= "<a target='_blank' title='Editieren'
+                $html .= "<a target='_blank' title='" . $addon->i18n('dev_modules_config_edit') . "'
                         href='" . rex_escape('/redaxo/index.php?page=content/edit&article_id=' . $articleId . '&slice_id=' . $sliceId . '&clang=' . $clang . '&ctype=' . $ctype . '&function=edit#slice' . $sliceId) . "'
                         class='btn btn-edit'><i class='fa fa-light fa-pencil'></i></a>";
             }
 
             if (!empty($GLOBALS["frontend_config"]['delete'])) {
-                $html .= "<a target='_blank' title='Löschen' onclick='return confirm(\"Block löschen?\");'
+                $html .= "<a target='_blank' title='" . $addon->i18n('dev_modules_config_delete') . "' onclick='return confirm(\"" . $addon->i18n('dev_modules_config_confirm_delete') . "\");'
                         href='" . rex_escape('/redaxo/index.php?page=content/edit&article_id=' . $articleId . '&slice_id=' . $sliceId . '&clang=' . $clang . '&ctype=' . $ctype . '&function=delete&save=1#slice' . $sliceId) . "'
                         class='btn btn-delete'>
                         <i class='fa fa-light fa-trash'></i></a>";
@@ -328,7 +329,7 @@ if (!function_exists('getArticleContentWithFrontendOptions')) {
             }
 
             if (!empty($GLOBALS["frontend_config"]['cut'])) {
-                $html .= "<a title='Ausschneiden' href='#'
+                $html .= "<a title='" . $addon->i18n('dev_modules_config_cut') . "' href='#'
                         class='btn btn-cut btn-bloecks-cut' 
                         data-link='" . rex_escape('/redaxo/index.php?page=content/edit&article_id=' . $articleId . '&clang=' . $clang . '&ctype=' . $ctype . '&mode=edit#slice' . $sliceId) . "'
                         data-slice-id='" . $sliceId . "'
@@ -349,7 +350,7 @@ if (!function_exists('getArticleContentWithFrontendOptions')) {
                     'ctype'        => $ctype,
                 ]);
 
-                $html .= "<a target='_blank' title='Nach oben schieben' href='" . $href . "'
+                $html .= "<a target='_blank' title='" . $addon->i18n('dev_modules_config_move_up') . "' href='" . $href . "'
                         class='btn btn-move'><i class='fa fa-light fa-arrow-up'></i></a>";
             }
 
@@ -366,7 +367,7 @@ if (!function_exists('getArticleContentWithFrontendOptions')) {
                 ]);
 
 
-                $html .= "<a target='_blank' title='Nach unten schieben' href='" . $href . "'
+                $html .= "<a target='_blank' title='" . $addon->i18n('dev_modules_config_move_down') . "' href='" . $href . "'
                         class='btn btn-move'><i class='fa fa-light fa-arrow-down'></i></a>";
             }
             $html .= "</div>";
@@ -379,12 +380,12 @@ if (!function_exists('getArticleContentWithFrontendOptions')) {
         // Letzter "Block hinzufügen"-Button
         if (!empty($GLOBALS["frontend_config"]['addingModules'])) {
             $pos = count($slices);
-            $html .= "<button class='rex-add-module' popovertarget='rex-add-module-popup' onclick='addModuleToCurrentPosition($pos, -1, $clang,$articleId)'><i class='fa fa-light fa-plus'></i> Block hinzufügen</button>";
+            $html .= "<button class='rex-add-module' popovertarget='rex-add-module-popup' onclick='addModuleToCurrentPosition($pos, -1, $clang,$articleId)'><i class='fa fa-light fa-plus'></i> " . $addon->i18n('dev_modules_config_adding_modules') . "</button>";
         }
 
         $html .= "<div popover id='rex-add-module-popup'>
                         <select name='module_id' id='moduleDropdown'>
-                            <option value=''>Modul auswählen...</option>";
+                            <option value=''>" . $addon->i18n('dev_modules_config_choose_module') . "</option>";
         foreach ($modules as $module) {
             $html .= '<option value="' . (int) $module['id'] . '">' . htmlspecialchars($module['name'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</option>';
         }
